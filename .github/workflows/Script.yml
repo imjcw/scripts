@@ -20,10 +20,15 @@ jobs:
 
     - name: 'Gen New Year Calendar'
       run: go run calendar/calendar.go
+      
+    - name: 'Show Diff'
+      run: git status
     
     - name: 'Push Calendar'
       uses: actions-go/push@7ad7ce209f2a038e7bca929b7a4c92026363f856
       with:
         commit-message: "new calendar"
         remote: origin
-        token: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: 'Show Diff2'
+      run: git status
