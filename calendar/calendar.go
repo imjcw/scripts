@@ -16,6 +16,7 @@ import (
 
 func main() {
 	time.LoadLocation("Asia/Shanghai")
+	// 2022
 	// genNewYearFile()
 	holidays, workdays := getHolidaysAndWeekdays(2022)
 	genDailyFile(2022, holidays, workdays)
