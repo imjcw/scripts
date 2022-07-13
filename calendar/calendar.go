@@ -35,7 +35,7 @@ func genNewYearFile() {
 		fmt.Println("未到10月份，暂不执行")
 		return
 	}
-	if fileExists("files/" + strconv.Itoa(year) + "-holidays.json") {
+	if fileExists("files/calendar/" + strconv.Itoa(year) + "-holidays.json") {
 		return
 	}
 	defer func() {
@@ -201,7 +201,7 @@ func genDailyFile(year int, holidays, workdays []string) {
 		"holidays": fullHolidays,
 		"workdays": workdays,
 	})
-	if err := ioutil.WriteFile("files/"+strconv.Itoa(year)+".json", data, 0644); err != nil {
+	if err := ioutil.WriteFile("files/calendar/"+strconv.Itoa(year)+".json", data, 0644); err != nil {
 		panic(err)
 	}
 }
