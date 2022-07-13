@@ -26,12 +26,6 @@ jobs:
       
     - name: 'Show Diff'
       run: git add .
-      
-    - name: 'Show Diff'
-      run: git commit -m 'new calendar'
-      
-    - name: 'Show Diff'
-      run: git push origin master
     
     - name: 'Push Calendar'
       uses: actions-go/push@7ad7ce209f2a038e7bca929b7a4c92026363f856
