@@ -18,3 +18,8 @@ jobs:
 
     - name: 'Gen New Year Calendar'
       run: go run calendar/calendar.go
+    
+    - name: 'Push Calendar'
+      with:
+        commit-message: "new calendar"
+        remote: origin
