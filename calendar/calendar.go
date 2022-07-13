@@ -16,7 +16,9 @@ import (
 
 func main() {
 	time.LoadLocation("Asia/Shanghai")
-	genNewYearFile()
+	// genNewYearFile()
+	holidays, workdays := getHolidaysAndWeekdays(2022)
+	genDailyFile(2022, holidays, workdays)
 }
 
 func checkPageChange() {
