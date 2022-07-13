@@ -26,3 +26,4 @@ jobs:
       with:
         commit-message: "new calendar"
         remote: origin
+        token: ${{ secrets.GITHUB_TOKEN }}
