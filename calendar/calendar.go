@@ -16,14 +16,7 @@ import (
 
 func main() {
 	time.LoadLocation("Asia/Shanghai")
-	ticker := time.NewTicker(time.Hour * 24)
-	for {
-		select {
-		case <-ticker.C:
-			go checkPageChange()
-			go genNewYearFile()
-		}
-	}
+	genNewYearFile()
 }
 
 func checkPageChange() {
