@@ -10,7 +10,7 @@ jobs:
     
     env:
       FEAST_SECRET: ${{secrets.FEAST_SECRET}}
-      FEAST_TOKEN: ${{secrets.FEAST_TOKEN
+      FEAST_TOKEN: ${{secrets.FEAST_TOKEN}}
 
     steps:
       - uses: actions/checkout@v3
