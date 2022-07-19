@@ -1,8 +1,8 @@
 name: feast
 
 on:
-  push:
-    branches: [ "master" ]
+  schedule:
+    - cron: '20 03 * * *'
 
 jobs:
   build:
@@ -20,5 +20,5 @@ jobs:
         with:
           go-version: 1.18
 
-      - name: Print envs
+      - name: Feast
         run: go run feast/feast.go
