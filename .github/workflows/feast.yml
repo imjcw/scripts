@@ -2,7 +2,7 @@ name: feast
 
 on:
   schedule:
-    - cron: '20 03 * * *'
+    - cron: '40 02 * * *'
 
 jobs:
   build:
