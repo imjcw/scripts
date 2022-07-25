@@ -201,7 +201,11 @@ func genDailyFile(year int, holidays, workdays []string) {
 		"holidays": fullHolidays,
 		"workdays": workdays,
 	})
+	holidayData, _:= json.Marshal(fullHolidays)
 	if err := ioutil.WriteFile("files/calendar/"+strconv.Itoa(year)+".json", data, 0644); err != nil {
+		panic(err)
+	}
+	if err := ioutil.WriteFile("files/calendar/"+strconv.Itoa(year)+"-holidays.json", fullHolidays, 0644); err != nil {
 		panic(err)
 	}
 }
