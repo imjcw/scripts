@@ -6,6 +6,10 @@
 
 ### serverless
   - juejin
-    - sign.js  掘金每日签到脚本
+    - cron.js  掘金每日签到脚本
   - dingtalk-robot
-    - sign.js  钉钉机器人签名脚本
+    - api.js   钉钉机器人签名脚本
+  - weather-notice
+    - cron.js  天气钉钉提醒
+  - today-is-workday
+    - api.js   今天是否工作日
