@@ -1,8 +1,5 @@
+import { store } from "napkin"
 const axios = require('axios')
-
-const getPage = async () => {
-  return (await axios.get("http://www.weather.com.cn/weather1dn/101020800.shtml")).data
-}
 
 // 钉钉机器人消息
 const robotNotice = async (content) => {
@@ -15,27 +12,35 @@ const robotNotice = async (content) => {
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(content)
-  });
+  })
+}
+
+const today = () => {
+  const date = new Date()
+  date.setHours(date.getHours() + 8)
+  const year = date.getFullYear()
+  const month = date.getMonth() < 9 ? '0' + (1 + date.getMonth()) : (1 + date.getMonth())
+  const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+  return year + `-` + month + `-` + day
 }
 
 const isWorkDay = async () => {
-    try {
-        return ((await axios({
-            url: process.env.FAAS_URL + `today-is-workday`
-        })).data || {}).isWorkday
-    } catch (error) {
-        return true
-    }
+  try {
+    const calendar = (await axios.get("https://raw.githubusercontent.com/imjcw/scripts/master/files/calendar/" + (new Date()).getFullYear() + "-holidays.json")).data
+    return calendar.holidays.indexOf(today()) == "-1"
+  } catch(e) {
+    console.error(e)
+    return {}
+  }
 }
 
-/**
-* @param {NapkinRequest} req
-* @param {NapkinResponse} res
-*/
-export default async (req, res) => {
-  const preg = /hour3data\s{0,}=\s{0,}(.*)/
-  const weather = JSON.parse(preg.exec(await getPage())[1].split(";")[0])
-  const rain = [3,4,5,6,7,8,9,"03","04","05","06","07","08","09",10,11,12,19,21,22,23,24,25,97,301]
+export default async () => {
+  const data = (await store.get("weather-notice")).data || {}
+  if ((data.date || "") != today()) {
+    return
+  }
+  const weather = data.weather
+  const rain = data.rain
   const message = {
     morning: {
       hasRain: false,
