@@ -11,5 +11,6 @@
     - api.js   钉钉机器人签名脚本
   - weather-notice
     - cron.js  天气钉钉提醒
+    - generator.js  天气爬虫记录天气记录
   - today-is-workday
     - api.js   今天是否工作日
