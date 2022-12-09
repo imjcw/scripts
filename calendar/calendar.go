@@ -91,6 +91,7 @@ func getLink(year string) (string, error) {
 	params.Set("sort", "pubtime")
 	params.Set("q", "部分节假日安排的通知")
 	URL.RawQuery = params.Encode()
+	fmt.Println(URL.String())
 	return URL.String(), nil
 }
 
