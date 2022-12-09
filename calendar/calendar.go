@@ -48,7 +48,7 @@ func genNewYearFile() {
 }
 
 func getHolidaysAndWeekdays(year int) ([]string, []string) {
-	searchLink, err := getLink(strconv.Itoa(year - 1))
+	searchLink, err := getLink(strconv.Itoa(year))
 	if err != nil {
 		panic(err)
 	}
