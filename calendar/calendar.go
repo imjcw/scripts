@@ -77,19 +77,19 @@ func getHolidaysAndWeekdays(year int) ([]string, []string) {
 }
 
 func getLink(year string) (string, error) {
-	URL, err := url.Parse("http://sousuo.gov.cn/s.htm")
+	URL, err := url.Parse("https://sousuo.gov.cn/sousuo/search.shtml")
 	if err != nil {
 		return "", err
 	}
 	params := url.Values{}
-	params.Set("t", "paper")
-	params.Set("advance", "false")
-	params.Set("n", "10")
-	params.Set("timetype", "timezd")
-	params.Set("mintime", year+"-01-01")
-	params.Set("maxtime", year+"-12-31")
-	params.Set("sort", "pubtime")
-	params.Set("q", "部分节假日安排的通知")
+	params.Set("code", "17da70961a7")
+	params.Set("dataTypeId", "14")
+	params.Set("sign", "")
+	params.Set("pageNo", "1")
+	params.Set("beginDateTime", year+"-01-01")
+	params.Set("endDateTime", year+"-12-31")
+	params.Set("granularity", "CUSTOM")
+	params.Set("searchWord", "部分节假日安排的通知")
 	URL.RawQuery = params.Encode()
 	return URL.String(), nil
 }
